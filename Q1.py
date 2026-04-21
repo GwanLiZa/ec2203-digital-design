@@ -42,7 +42,14 @@ def dec_to_ebcdic(dec_str):
     num_str = str(abs(dec_str))
 
     result = [EBCDIC[d] for d in num_str]
-    result[-1] = EBCDIC[sign][0] + result[-1][1]  # 마지막 digit에 sign 넣기
+    result[-1] = EBCDIC[sign][0] + result[-1][1]
+
+    return ' '.join(result)
+
+def dec_to_ascii(dec_str):
+    dec_str = str(int(dec_str))
+
+    result = [format(ord(c), '02X') for c in dec_str]
 
     return ' '.join(result)
 
